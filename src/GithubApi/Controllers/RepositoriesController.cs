@@ -17,7 +17,7 @@ namespace GithubApi.Controllers
             Language searchLanguage;
             if (!Language.TryParse(language, true, out searchLanguage))
             {
-                return BadRequest();
+                return BadRequest("Please use a supported language " + string.Join(", ", Enum.GetNames(typeof(Language))));
             }
 
             var github = new GitHubClient(new ProductHeaderValue("mutmatt.GitHubSearchApi"));
